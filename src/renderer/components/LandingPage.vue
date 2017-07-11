@@ -1,13 +1,28 @@
 <template>
   <div>
-    home
+    <el-tabs v-model="activeTab" type="card">
+      <el-tab-pane label="实时新闻" name="liveNews">
+        <live-news />
+      </el-tab-pane>
+      <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+      <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
 <script>
+  import LiveNews from './LandingPage/LiveNews'
+
   export default {
     name: 'landing-page',
-    components: {},
+    data() {
+      return {
+        activeTab: 'liveNews'
+      }
+    },
+    components: {
+      LiveNews
+    },
     methods: {
     },
   };

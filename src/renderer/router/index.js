@@ -7,10 +7,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'landing-page',
       component: require('@/components/CommonView'),
       children: [
-
+        {
+          path: '/',
+          name: 'landing-page',
+          component: require('@/components/LandingPage')
+        }
       ],
     },
     {

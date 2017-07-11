@@ -11,11 +11,11 @@ if (!process.env.IS_WEB) Vue.use(require('vue-electron'));
 Vue.http = Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 
-new Notification('7x24', {
-  subtitle: '选股宝',
-  body: '大新闻啊大新闻',
-  silent: false,
-});
+// new Notification('7x24', {
+//   subtitle: '选股宝',
+//   body: '大新闻啊大新闻',
+//   silent: false,
+// });
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,7 +1,6 @@
 <template>
 	<div id="widget-page">
-		<router-link to="/">Home</router-link>
-    <el-button type="primary">主要按钮</el-button>
+    大新闻啊大新闻
 	</div>
 </template>
 
@@ -27,6 +26,8 @@
 	body {
 		height: 100%;
     margin: 0;
+  }
+  body {
     -webkit-app-region: drag;
   }
   #widget-page {
