@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="landing-page">
     <el-tabs v-model="activeTab" type="card">
       <el-tab-pane label="实时新闻" name="liveNews">
         <live-news />
@@ -28,5 +28,8 @@
   };
 </script>
 
-<style>
+<style lang="scss" scoped>
+  .landing-page {
+    padding: 5px 15px;
+  }
 </style>

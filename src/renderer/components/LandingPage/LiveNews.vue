@@ -10,17 +10,13 @@
   import LiveNewsItem from './LiveNewsItem'
 
   export default {
-    data() {
-      return {
-        msgs: []
+    computed: {
+      msgs() {
+        return this.$store.state.LiveNews.msgs
       }
     },
     mounted() {
-      this.$http.get('http://devapi.xuangubao.cn/api/pc/msgs?limit=30&subjids=9,10,35,469')
-        .then(res => {
-          console.log(res.data)
-          this.msgs = res.data.NewMsgs
-        })
+      this.$store.dispatch('fetchLiveNews')
     },
     components: {
       LiveNewsItem

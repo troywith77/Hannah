@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'baoer-electron',
+    name: 'Hannah'
   };
 </script>
 
@@ -15,14 +15,5 @@
   body,
   #app {
     min-height: 100vh;
-  }
-  #app-nav-container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-  }
-  #app-content-container {
-    margin-left: 180px;
   }
 </style>
