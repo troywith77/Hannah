@@ -1,8 +1,10 @@
-import { app, BrowserWindow, ipcMain as ipc } from 'electron'
+import { app, BrowserWindow } from 'electron'
 import './tray'
 import './session'
 import './dialog'
 import './widget'
+import './ipcMain'
+import './contextMenu'
 
 /**
  * Set `__static` path to static files in production
@@ -46,7 +48,6 @@ app.on('activate', () => {
     createWindow()
   }
 })
-
 
 /**
  * Auto Updater

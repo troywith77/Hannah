@@ -2,10 +2,13 @@
   <div>
     <el-button @click="test">test</el-button>
     <el-button @click="toggle">toggle widget</el-button>
+    <el-button @click="notify">notify</el-button>
   </div>
 </template>
 
 <script>
+  const notifier = require('node-notifier');
+
   export default {
     methods: {
       test() {
@@ -13,6 +16,13 @@
       },
       toggle() {
         this.$electron.ipcRenderer.send('toggle-widget')
+      },
+      notify() {
+        notifier.notify({
+          'title': 'My notification',
+          'message': 'Hello, there!',
+          sound: true
+        });
       }
     },
     mounted() {

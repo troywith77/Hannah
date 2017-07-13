@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain as ipc } from 'electron'
+import { app, BrowserWindow } from 'electron'
 
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
@@ -24,11 +24,7 @@ function createFramelessWindow() {
 
 app.on('ready', createFramelessWindow)
 
-ipc.on('toggle-widget', function(e) {
-  toggle()
-})
-
-function toggle() {
+function toggleWidget() {
   if(win) {
     win.isVisible() ? win.hide() : win.showInactive()
   } else {
@@ -37,5 +33,5 @@ function toggle() {
 }
 
 export {
-  toggle
+  toggleWidget
 }
