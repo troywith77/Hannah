@@ -1,4 +1,8 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain as ipc } from 'electron'
+import './tray'
+import './session'
+import './dialog'
+import './widget'
 
 /**
  * Set `__static` path to static files in production
@@ -9,15 +13,12 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let mainWindow
-let win
+
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
 
 function createWindow () {
-  /**
-   * Initial window options
-   */
   mainWindow = new BrowserWindow({
     minWidth: 800,
     minHeight: 600
@@ -32,23 +33,7 @@ function createWindow () {
   })
 }
 
-function createFramelessWindow() {
-  win = new BrowserWindow({
-    frame: false,
-    width: 300,
-    height: 100,
-    // resizable: false,
-    x: 1500,
-    y: 100,
-  });
-  win.on('close', () => { win = null; });
-  win.loadURL(`${winURL}/#/widget`);
-  win.show();
-  win.setAlwaysOnTop(true, 'status');
-}
-
 app.on('ready', createWindow)
-app.on('ready', createFramelessWindow)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -61,6 +46,7 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
 
 /**
  * Auto Updater

@@ -11,12 +11,12 @@
     },
     mounted() {
       const win = this.$electron.remote.getCurrentWindow();
-      document.addEventListener('mouseenter', () => {
-        win.setSize(300, 300, true);
-      });
-      document.addEventListener('mouseleave', () => {
-        win.setSize(300, 100, true);
-      });
+      // document.addEventListener('mouseenter', () => {
+      //   win.setSize(100, 300);
+      // });
+      // document.addEventListener('mouseleave', () => {
+      //   win.setSize(100, 100);
+      // });
     },
   };
 </script>
@@ -26,6 +26,8 @@
 	body {
 		height: 100%;
     margin: 0;
+    background-color: #e35313;
+    color: #fff;
   }
   body {
     -webkit-app-region: drag;
