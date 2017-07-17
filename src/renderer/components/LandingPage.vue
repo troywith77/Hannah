@@ -1,13 +1,14 @@
 <template>
   <div class="landing-page">
-    <el-tabs v-model="activeTab" type="card">
-      <el-tab-pane label="实时新闻" name="liveNews">
-        <live-news />
+    <el-tabs v-model="activeTab" type="card" closable @tab-remove="removeTab">
+      <el-tab-pane
+        v-for="(item, index) in tabs"
+        :key="item.name"
+        :label="item.title"
+        :name="item.name"
+      >
+        <component :is="item.content"></component>
       </el-tab-pane>
-      <el-tab-pane label="配置管理" name="second">
-        <test />
-      </el-tab-pane>
-      <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -18,16 +19,28 @@
 
   export default {
     name: 'landing-page',
+    computed: {
+      activeTab(){
+        return this.$store.state.Tabs.activeTab 
+      },
+      tabs() {
+        return this.$store.state.Tabs.tabs
+      },
+      tabIndex() {
+        return this.$store.state.Tabs.tabIndex
+      }
+    },
     data() {
-      return {
-        activeTab: 'liveNews'
+      return {}
+    },
+    methods: {
+      removeTab(targetName) {
+        this.$store.dispatch('removeTab', targetName)
       }
     },
     components: {
       LiveNews,
       Test
-    },
-    methods: {
     },
   };
 </script>
