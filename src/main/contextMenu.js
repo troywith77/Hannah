@@ -1,4 +1,4 @@
-import { BrowserWindow, Menu, MenuItem, ipcMain as ipc, app } = electron
+import { BrowserWindow, Menu, MenuItem, ipcMain as ipc, app } from 'electron'
 
 const menu = new Menu()
 menu.append(new MenuItem({ label: 'Hello' }))
