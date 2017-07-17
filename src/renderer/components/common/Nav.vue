@@ -1,23 +1,37 @@
 <template>
   <div id="app-nav">
-    <el-menu default-active="LiveNews" class="el-menu-vertical-demo" @select="select">
-      <el-menu-item index="LiveNews" title="实时新闻"><i class="el-icon-menu"></i>7x24</el-menu-item>
-      <el-menu-item index="Zhutiku" title="主题库"><i class="el-icon-setting"></i>主题库</el-menu-item>
-      <el-menu-item index="Ban" title="打板神器"><i class="el-icon-star-off"></i>打板神器</el-menu-item>
+    <el-menu :default-active="active" class="el-menu-vertical-demo" @select="select">
+      <el-menu-item
+        v-for="nav of navs"
+        :index="nav.index"
+        :title="nav.label"
+        :key="nav.index"
+      >
+        <i :class="nav.icon"></i>{{ nav.label }}
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script>
   export default {
+    computed: {
+      active() {
+        return this.$store.state.Nav.activeNav
+      },
+      navs() {
+        return this.$store.state.Nav.navs
+      }
+    },
     methods: {
       select(index, indexPath, e) {
         this.$store.dispatch('addTab', {
           key: index, 
-          title: e.$el.title
+          label: e.$el.title
         })
+        this.$store.dispatch('changeNav', index)
       }
-    },
+    }
   };
 </script>
 

@@ -26,7 +26,6 @@
       }
     },
     mounted() {
-      console.log(this.$electron)
       this.$electron.ipcRenderer.on('information-dialog-selection', function(e, args) {
         console.log(e, args)
       })

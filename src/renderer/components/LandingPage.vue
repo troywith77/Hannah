@@ -1,10 +1,10 @@
 <template>
   <div class="landing-page">
-    <el-tabs v-model="activeTab" type="card" closable @tab-remove="removeTab">
+    <el-tabs v-model="activeTab" type="card" closable @tab-click="clickTab" @tab-remove="removeTab">
       <el-tab-pane
         v-for="(item, index) in tabs"
         :key="item.name"
-        :label="item.title"
+        :label="item.label"
         :name="item.name"
       >
         <component :is="item.content"></component>
@@ -14,6 +14,8 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   import LiveNews from './LiveNews/LiveNews'
   import Zhutiku from './Zhutiku/Zhutiku'
   import Ban from './Ban/Ban'
@@ -21,20 +23,16 @@
 
   export default {
     name: 'landing-page',
-    computed: {
-      activeTab() {
-        return this.$store.state.Tabs.activeTab
-      },
-      tabs() {
-        return this.$store.state.Tabs.tabs
-      }
-    },
-    data() {
-      return {}
-    },
+    computed: mapState({
+      activeTab: state => state.Tabs.activeTab,
+      tabs: state => state.Tabs.tabs
+    }),
     methods: {
       removeTab(targetName) {
         this.$store.dispatch('removeTab', targetName)
+      },
+      clickTab(tab, e) {
+        this.$store.dispatch('changeNav', tab.name)
       }
     },
     components: {

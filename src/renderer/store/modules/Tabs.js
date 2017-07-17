@@ -1,11 +1,11 @@
 const state = {
   activeTab: 'LiveNews',
   tabs: [{
-    title: '实时新闻',
+    label: '实时新闻',
     name: 'LiveNews',
     content: 'LiveNews'
   }, {
-    title: 'Tab 2',
+    label: 'Tab 2',
     name: 'Test',
     content: 'Test'
   }]
@@ -29,10 +29,10 @@ const mutations = {
     state.activeTab = activeName;
     state.tabs = tabs.filter(tab => tab.name !== targetName);
   },
-  ADD_TAB(state, { key, title }) {
+  ADD_TAB(state, { key, label }) {
     if(!~state.tabs.map(tab => tab.name).indexOf(key)) {
       state.tabs.push({
-        title: title || key,
+        label: label || key,
         name: key,
         content: key
       })
