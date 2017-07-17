@@ -1,7 +1,7 @@
 const state = {
   activeTab: 'LiveNews',
   tabs: [{
-    title: 'Tab 1',
+    title: '实时新闻',
     name: 'LiveNews',
     content: 'LiveNews'
   }, {
@@ -29,15 +29,15 @@ const mutations = {
     state.activeTab = activeName;
     state.tabs = tabs.filter(tab => tab.name !== targetName);
   },
-  ADD_TAB(state, tabName) {
-    if(!~state.tabs.map(tab => tab.name).indexOf(tabName)) {
+  ADD_TAB(state, { key, title }) {
+    if(!~state.tabs.map(tab => tab.name).indexOf(key)) {
       state.tabs.push({
-        title: tabName,
-        name: tabName,
-        content: null
+        title: title || key,
+        name: key,
+        content: key
       })
     }
-    state.activeTab = tabName
+    state.activeTab = key
   }
 };
 
@@ -45,8 +45,8 @@ const actions = {
   removeTab({ commit }, targetName) {
     commit('REMOVE_TAB', targetName)
   },
-  addTab({ commit }, tabName) {
-    commit('ADD_TAB', tabName)
+  addTab({ commit }, payload) {
+    commit('ADD_TAB', payload)
   }
 };
 

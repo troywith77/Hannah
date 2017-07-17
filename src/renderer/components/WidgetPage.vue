@@ -26,8 +26,7 @@
 	body {
 		height: 100%;
     margin: 0;
-    background-color: #e35313;
-    color: #fff;
+    color: #000;
   }
   body {
     -webkit-app-region: drag;

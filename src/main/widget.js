@@ -14,6 +14,7 @@ function createFramelessWindow() {
     x: 1500,
     y: 100,
     resizable: false,
+    transparent: true,
     // closable: false
   });
   win.on('close', () => { win = null; });

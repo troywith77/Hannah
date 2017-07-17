@@ -14,20 +14,19 @@
 </template>
 
 <script>
-  import LiveNews from './LandingPage/LiveNews'
+  import LiveNews from './LiveNews/LiveNews'
+  import Zhutiku from './Zhutiku/Zhutiku'
+  import Ban from './Ban/Ban'
   import Test from './LandingPage/Test'
 
   export default {
     name: 'landing-page',
     computed: {
-      activeTab(){
-        return this.$store.state.Tabs.activeTab 
+      activeTab() {
+        return this.$store.state.Tabs.activeTab
       },
       tabs() {
         return this.$store.state.Tabs.tabs
-      },
-      tabIndex() {
-        return this.$store.state.Tabs.tabIndex
       }
     },
     data() {
@@ -40,7 +39,9 @@
     },
     components: {
       LiveNews,
-      Test
+      Test,
+      Zhutiku,
+      Ban
     },
   };
 </script>
