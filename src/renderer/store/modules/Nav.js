@@ -16,21 +16,17 @@ const state = {
 }
 
 const mutations = {
-  CHANGE_ACTIVE_TAB(state, tabName) {
-    state.activeNav = tabName
-  },
-  CHANGE_NAV(state, tabName) {
-    console.log(tabName)
-    state.activeNav = tabName
+  CHANGE_NAV(state, key) {
+    state.activeNav = key
   }
 }
 
 const actions = {
-  selectNav({ commit }, tabName) {
-    commit('CHANGE_ACTIVE_TAB', tabName)
+  clickTab({ commit }, key) {
+    commit('CHANGE_NAV', key)
   },
-  changeNav({ commit }, tabName) {
-    commit('CHANGE_NAV', tabName)
+  addTab({ commit }, payload) {
+    commit('CHANGE_NAV', payload.key)
   }
 }
 

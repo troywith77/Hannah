@@ -12,7 +12,14 @@
   export default {
     computed: {
       msgs() {
-        return this.$store.state.LiveNews.msgs
+        // return this.$store.state.LiveNews.msgs
+        return [{
+          Title: '哈哈',
+          Id: 34214
+        }, {
+          Title: '嘎嘎',
+          Id: 343214
+        }]
       }
     },
     mounted() {

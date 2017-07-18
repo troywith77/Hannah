@@ -3,11 +3,11 @@
     <el-tabs v-model="activeTab" type="card" closable @tab-click="clickTab" @tab-remove="removeTab">
       <el-tab-pane
         v-for="(item, index) in tabs"
-        :key="item.name"
+        :key="item.key"
         :label="item.label"
-        :name="item.name"
+        :name="item.key"
       >
-        <component :is="item.content"></component>
+        <component :is="item.component"></component>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -20,26 +20,27 @@
   import Zhutiku from './Zhutiku/Zhutiku'
   import Ban from './Ban/Ban'
   import Test from './LandingPage/Test'
+  import Message from './Message/Message'
 
   export default {
-    name: 'landing-page',
     computed: mapState({
       activeTab: state => state.Tabs.activeTab,
       tabs: state => state.Tabs.tabs
     }),
     methods: {
-      removeTab(targetName) {
-        this.$store.dispatch('removeTab', targetName)
+      removeTab(key) {
+        this.$store.dispatch('removeTab', key)
       },
-      clickTab(tab, e) {
-        this.$store.dispatch('changeNav', tab.name)
+      clickTab(tab) {
+        this.$store.dispatch('clickTab', tab.name)
       }
     },
     components: {
       LiveNews,
       Test,
       Zhutiku,
-      Ban
+      Ban,
+      Message
     },
   };
 </script>

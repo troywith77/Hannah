@@ -26,10 +26,11 @@
     methods: {
       select(index, indexPath, e) {
         this.$store.dispatch('addTab', {
-          key: index, 
+          component: index, 
+          key: index,
           label: e.$el.title
         })
-        this.$store.dispatch('changeNav', index)
+        // this.$store.dispatch('changeNav', index)
       }
     }
   };

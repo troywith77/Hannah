@@ -2,51 +2,57 @@ const state = {
   activeTab: 'LiveNews',
   tabs: [{
     label: '实时新闻',
-    name: 'LiveNews',
-    content: 'LiveNews'
+    key: 'LiveNews',
+    component: 'LiveNews'
   }, {
     label: 'Tab 2',
-    name: 'Test',
-    content: 'Test'
+    key: 'Test',
+    component: 'Test'
   }]
 };
 
 const mutations = {
-  REMOVE_TAB(state, targetName) {
+  REMOVE_TAB(state, key) {
     let tabs = state.tabs;
-    let activeName = state.activeTab;
-    if (activeName === targetName) {
+    let activeTab = state.activeTab;
+    if (activeTab === key) {
       tabs.forEach((tab, index) => {
-        if (tab.name === targetName) {
+        if (tab.key === key) {
           let nextTab = tabs[index + 1] || tabs[index - 1];
           if (nextTab) {
-            activeName = nextTab.name;
+            activeTab = nextTab.key;
           }
         }
       });
     }
     
-    state.activeTab = activeName;
-    state.tabs = tabs.filter(tab => tab.name !== targetName);
+    state.activeTab = activeTab;
+    state.tabs = tabs.filter(tab => tab.key !== key);
   },
-  ADD_TAB(state, { key, label }) {
-    if(!~state.tabs.map(tab => tab.name).indexOf(key)) {
+  ADD_TAB(state, { component, key, label }) {
+    if(!~state.tabs.map(tab => tab.key).indexOf(key)) {
       state.tabs.push({
-        label: label || key,
-        name: key,
-        content: key
+        label: label,
+        key: key,
+        component: component
       })
     }
+    state.activeTab = key
+  },
+  CLICK_TAB(state, key) {
     state.activeTab = key
   }
 };
 
 const actions = {
-  removeTab({ commit }, targetName) {
-    commit('REMOVE_TAB', targetName)
+  removeTab({ commit }, key) {
+    commit('REMOVE_TAB', key)
   },
   addTab({ commit }, payload) {
     commit('ADD_TAB', payload)
+  },
+  clickTab({ commit }, key) {
+    commit('CLICK_TAB', key)
   }
 };
 

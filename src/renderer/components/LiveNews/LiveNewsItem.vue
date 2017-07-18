@@ -1,12 +1,21 @@
 <template>
-  <li class="live-news-item">
+  <li class="live-news-item" @click="clickMsg">
     {{ msg.Title }}
   </li>
 </template>
 
 <script>
   export default {
-    props: ['msg']
+    props: ['msg'],
+    methods: {
+      clickMsg() {
+        this.$store.dispatch('addTab', {
+          label: this.msg.Title,
+          key: `Message-${this.msg.Id}`,
+          component: 'Message'
+        })
+      }
+    }
   }
 </script>
 
