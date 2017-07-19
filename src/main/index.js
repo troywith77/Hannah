@@ -5,6 +5,7 @@ import './dialog'
 import './widget'
 import './ipcMain'
 import './contextMenu'
+import './menu'
 
 /**
  * Set `__static` path to static files in production

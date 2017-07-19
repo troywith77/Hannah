@@ -7,7 +7,7 @@
         :label="item.label"
         :name="item.key"
       >
-        <component :is="item.component"></component>
+        <component :is="item.component" :params="item.params"></component>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -21,6 +21,7 @@
   import Ban from './Ban/Ban'
   import Test from './LandingPage/Test'
   import Message from './Message/Message'
+  import Stock from './Stock/Stock'
 
   export default {
     computed: mapState({
@@ -40,7 +41,8 @@
       Test,
       Zhutiku,
       Ban,
-      Message
+      Message,
+      Stock
     },
   };
 </script>

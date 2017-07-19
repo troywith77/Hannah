@@ -1,12 +1,30 @@
 <template>
   <div>
-    1
+    <div v-html="msg.Content" />
   </div>
 </template>
 
 <script>
-  export default {
+  import { getMessage } from '@/services/Message'
 
+  export default {
+    props: ['params'],
+    data() {
+      return {
+        msg: {}
+      }
+    },
+    methods: {
+      fetchData() {
+        getMessage(this.params.id).then(res => {
+          console.log(res.data)
+          this.msg = res.data
+        })
+      }
+    },
+    mounted() {
+      this.fetchData()
+    }
   }
 </script>
 

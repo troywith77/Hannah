@@ -29,12 +29,13 @@ const mutations = {
     state.activeTab = activeTab;
     state.tabs = tabs.filter(tab => tab.key !== key);
   },
-  ADD_TAB(state, { component, key, label }) {
+  ADD_TAB(state, { component, key, label, params }) {
     if(!~state.tabs.map(tab => tab.key).indexOf(key)) {
       state.tabs.push({
-        label: label,
-        key: key,
-        component: component
+        label,
+        key,
+        component,
+        params
       })
     }
     state.activeTab = key
