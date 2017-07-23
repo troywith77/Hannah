@@ -10,7 +10,7 @@ function createFramelessWindow() {
   win = new BrowserWindow({
     frame: false,
     width: 600,
-    height: 50,
+    height: 100,
     x: 1500,
     y: 100,
     // resizable: false,

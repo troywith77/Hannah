@@ -4,6 +4,7 @@
     <div class="widget-options">
       <span @click="closeWidget">X</span>
       <span @click="setSize">{{ minSize ? '+' : '-' }}</span>
+      <span class="drag-handler">#</span>
     </div>
 	</div>
 </template>
@@ -46,8 +47,9 @@
     overflow: hidden;
     background: #ccc;
   }
-  body {
+  .drag-handler {
     -webkit-app-region: drag;
+    cursor: pointer;
   }
   .widget {
     display: flex;
@@ -61,7 +63,9 @@
       flex-direction: column;
       flex-basis: 30px;
       -webkit-app-region: no-drag;
-      cursor: pointer;
+      span {
+        cursor: pointer;
+      }
     }
   }
 </style>
